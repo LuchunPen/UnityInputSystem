@@ -27,7 +27,11 @@ public class UI_GameplayController : MonoBehaviour
     private void Unsubscribe()
     {
         Signals.OnPause -= OnPauseActivate;
+    }
 
+    public void CloseAndUnpause()
+    {
+        Signals.OnPause?.Invoke(this, false);
     }
 
     private void OnPauseActivate(object sender, bool value)

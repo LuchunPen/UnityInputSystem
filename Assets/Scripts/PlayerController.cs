@@ -13,6 +13,26 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInput _controller;
     private Vector2 _direction;
 
+    private void Awake()
+    {
+        Subscribe();
+    }
+
+    private void OnDestroy()
+    {
+        Unsubscribe();
+    }
+
+    private void Subscribe()
+    {
+        Signals.OnPause += OnPauseHandler;
+    }
+
+    private void Unsubscribe()
+    {
+        Signals.OnPause -= OnPauseHandler;
+    }
+
     void Update()
     {
         Move();
@@ -37,14 +57,11 @@ public class PlayerController : MonoBehaviour
     {
         bool isPaused = Signals.IsPaused.SafeInvoke();
         Signals.OnPause?.Invoke(this, !isPaused);
+    }
 
-        if (!Signals.IsPaused.SafeInvoke())
-        {
-            _controller.SwitchCurrentActionMap("InGamePlayer");
-        }
-        else
-        {
-            _controller.SwitchCurrentActionMap("UI");
-        }
+    private void OnPauseHandler(object sender, bool e)
+    {
+        if (e) { _controller.SwitchCurrentActionMap("UI"); }
+        else { _controller.SwitchCurrentActionMap("InGamePlayer"); }
     }
 }
