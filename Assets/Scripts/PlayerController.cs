@@ -56,7 +56,9 @@ public class PlayerController : MonoBehaviour
     private void OnTogglePause(InputValue value)
     {
         bool isPaused = Signals.IsPaused.SafeInvoke();
-        Signals.OnPause?.Invoke(this, !isPaused);
+
+        if (isPaused) { Signals.TryToUnpause?.Invoke(this, null); }
+        else { Signals.TryToPause?.Invoke(this, null); }
     }
 
     private void OnPauseHandler(object sender, bool e)

@@ -5,8 +5,9 @@ using UnityEngine.InputSystem.UI;
 
 public class UI_GameplayController : MonoBehaviour
 {
-    [SerializeField] private GameObject _menuPanel;
     [SerializeField] private InputSystemUIInputModule _input;
+    [SerializeField] private UI_WindowsController _menuControllers;
+    [SerializeField] private string _pauseMenuName;
 
     private void Awake()
     {
@@ -20,34 +21,46 @@ public class UI_GameplayController : MonoBehaviour
 
     private void Subscribe()
     {
-        Signals.OnPause += OnPauseActivate;
+        Signals.CloseMenuWindow = CloseMenuWindow;
+        Signals.OpenMenuWindow = OpenMenuWindow;
 
+        _menuControllers.OnWindowClosed += OnWindowClosedHandler;
     }
 
     private void Unsubscribe()
     {
-        Signals.OnPause -= OnPauseActivate;
+        Signals.CloseMenuWindow = null;
+        Signals.OpenMenuWindow = null;
+        
+        _menuControllers.OnWindowClosed -= OnWindowClosedHandler;
     }
 
-    public void CloseAndUnpause()
+    public int CloseMenuWindow(object sender)
     {
-        Signals.OnPause?.Invoke(this, false);
+        _menuControllers.CloseNext();
+        return _menuControllers.ActiveWindowsCount;
     }
 
-    private void OnPauseActivate(object sender, bool value)
+    private void OnWindowClosedHandler(object sender, string name)
     {
-        _menuPanel.gameObject.SetActive(value);
-
-        if (value)
+        if (_menuControllers.ActiveWindowsCount == 0)
         {
-            PlayerController pc = sender as PlayerController;
-            if (pc != null)
-            {
-                PlayerInput pi = pc.GetComponent<PlayerInput>();
-                if (pi == null) { return; }
-
-                _input.actionsAsset = pi.actions;
-            }
+            Signals.TryToUnpause?.Invoke(this, null);
         }
+    }
+
+    private int OpenMenuWindow(object sender)
+    {
+        PlayerController pc = sender as PlayerController;
+        if (pc != null)
+        {
+            PlayerInput pi = pc.GetComponent<PlayerInput>();
+            if (pi == null) { return 0; }
+
+            _input.actionsAsset = pi.actions;
+        }
+
+        _menuControllers.OpenWindow(_pauseMenuName);
+        return _menuControllers.ActiveWindowsCount;
     }
 }
