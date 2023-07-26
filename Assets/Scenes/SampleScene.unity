@@ -1069,6 +1069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 242039685}
   - component: {fileID: 242039684}
+  - component: {fileID: 242039686}
   m_Layer: 0
   m_Name: GameplayManager
   m_TagString: Untagged
@@ -1088,6 +1089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae298771df4f91a48baebb2f02cda1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bindings: {fileID: 242039686}
 --- !u!4 &242039685
 Transform:
   m_ObjectHideFlags: 0
@@ -1103,6 +1105,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &242039686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242039683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6c2da2db9374dada6761b5e35121c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: {fileID: -944628639613478452, guid: aabac7b827b0b0542a88820ceb6632a9, type: 3}
 --- !u!1 &325478114
 GameObject:
   m_ObjectHideFlags: 0
@@ -2902,28 +2917,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809614128}
   m_CullTransparentMesh: 1
---- !u!1 &812142738 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6680292650503350822, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
-  m_PrefabInstance: {fileID: 1111285076}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &812142739 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6680292650503350825, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
   m_PrefabInstance: {fileID: 1111285076}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &812142741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812142738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce0d875482e5c1247bd3c14152b3dc9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &823719537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3342,6 +3340,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dafbe82cb39a8f449e222b9fd192c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHotClose:
+    m_PersistentCalls:
+      m_Calls: []
   _windowName: Menu
   _root: {fileID: 142523720}
   _cg: {fileID: 142523722}
@@ -4707,6 +4708,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dafbe82cb39a8f449e222b9fd192c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHotClose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1559867678}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindSaveLoad,
+          Unity.InputSystem.RebindingUI
+        m_MethodName: LoadBindings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _windowName: Keyboard
   _root: {fileID: 423872263}
   _cg: {fileID: 423872265}
@@ -5031,6 +5048,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dafbe82cb39a8f449e222b9fd192c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHotClose:
+    m_PersistentCalls:
+      m_Calls: []
   _windowName: Settings
   _root: {fileID: 1809512888}
   _cg: {fileID: 1809512890}
@@ -5255,6 +5275,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dafbe82cb39a8f449e222b9fd192c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHotClose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2018449522}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindSaveLoad,
+          Unity.InputSystem.RebindingUI
+        m_MethodName: LoadBindings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _windowName: Gamepad
   _root: {fileID: 2073985888}
   _cg: {fileID: 2073985890}

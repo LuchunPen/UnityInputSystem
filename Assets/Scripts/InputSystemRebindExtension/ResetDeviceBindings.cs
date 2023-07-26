@@ -1,6 +1,8 @@
 using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
-namespace UnityEngine.InputSystem.Samples.RebindUI
+namespace RebindExtension
 {
     public class ResetDeviceBindings : MonoBehaviour
     {

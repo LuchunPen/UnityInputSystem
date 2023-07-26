@@ -37,7 +37,7 @@ public class UI_GameplayController : MonoBehaviour
 
     public int CloseMenuWindow(object sender)
     {
-        _menuControllers.CloseNext();
+        _menuControllers.CloseNext(true);
         return _menuControllers.ActiveWindowsCount;
     }
 

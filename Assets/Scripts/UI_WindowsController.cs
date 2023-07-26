@@ -25,6 +25,19 @@ public class UI_WindowsController : MonoBehaviour
         return null;
     }
 
+    public UI_Window GetActiveWindow(string name)
+    {
+        for (int i = 0; i < _active.Count; i++)
+        {
+            if (_active[i] == null) { continue; }
+            if (_active[i].WindowName != name) { continue; }
+
+            return _active[i];
+        }
+
+        return null;
+    }
+
     public bool IsWindowOpened(string name)
     {
         for (int i = 0; i < _active.Count; i++)
@@ -40,7 +53,7 @@ public class UI_WindowsController : MonoBehaviour
 
     public void OpenWindow(string name)
     {
-        UI_Window w = null;
+        UI_Window w = GetActiveWindow(name);
 
         for (int i = 0; i < _windows.Length; i++)
         {
@@ -78,31 +91,35 @@ public class UI_WindowsController : MonoBehaviour
 
     public void Close(string name)
     {
-        UI_Window w = null;
-
-        for (int i = 0; i < _active.Count; i++)
-        {
-            if (_active[i] == null) { continue; }
-            if (_active[i].WindowName != name) { continue; }
-
-            w = _active[i];
-            break;
-        }
-
+        UI_Window w = GetActiveWindow(name);
         if (w == null) { return; }
-        _active.Remove(w);
+        
         w.Close();
-
+        _active.Remove(w);
         OnWindowClosed?.Invoke(this, w.WindowName);
+
         ActivateLast();
     }
 
-    public void CloseNext()
+    public void CloseHot(string name)
+    {
+        UI_Window w = GetActiveWindow(name);
+        if (w == null) { return; }
+
+        w.HotClose();
+        _active.Remove(w);
+        OnWindowClosed?.Invoke(this, w.WindowName);
+
+        ActivateLast();
+    }
+
+    public void CloseNext(bool hot = false)
     {
         if (_active.Count == 0) { return; }
         UI_Window w = _active[_active.Count - 1];
 
-        Close(w.WindowName);
+        if (hot) { CloseHot(w.WindowName); }
+        else { Close(w.WindowName); }
     }
 
     public void CloseAllWindows()
@@ -112,7 +129,7 @@ public class UI_WindowsController : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            CloseNext();
+            CloseNext(true);
         }
     }
 }

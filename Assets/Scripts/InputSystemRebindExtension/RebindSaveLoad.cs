@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace UnityEngine.InputSystem.Samples.RebindUI
+namespace RebindExtension
 {
     public class RebindSaveLoad : MonoBehaviour
     {
-        public InputActionAsset actions;
+        [SerializeField] private InputActionAsset actions;
 
         public void SaveBindings()
         {

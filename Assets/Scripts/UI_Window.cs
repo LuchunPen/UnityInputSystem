@@ -1,9 +1,12 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UI_Window : MonoBehaviour
 {
+    public UnityEvent OnHotClose;
+
     [SerializeField] private string _windowName;
     public string WindowName { get { return _windowName; } }
 
@@ -24,6 +27,13 @@ public class UI_Window : MonoBehaviour
     {
         DeactivateInteraction();
         _root.gameObject.SetActive(false);
+    }
+
+    public virtual void HotClose()
+    {
+        OnHotClose?.Invoke();
+
+        Close();
     }
 
     public void ActivateInteraction()
