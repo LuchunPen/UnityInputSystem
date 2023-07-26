@@ -1,19 +1,19 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using RebindExtension;
+using UnityEngine.InputSystem.Samples.RebindUI;
 
 public class GameplayManager : MonoBehaviour
 {
-    [SerializeField] private RebindSaveLoad _bindings;
-
+    [SerializeField] private InputActionAsset _playerInput;
     private PlayerController _pauseInitiator = null;
     private bool _gameIsPaused;
 
     private void Awake()
     {
         Subscribe();
-        if (_bindings != null) { _bindings.LoadBindings(); }
+        
+        RebindHelper.LoadBindings(_playerInput);
     }
 
     private void OnDestroy()

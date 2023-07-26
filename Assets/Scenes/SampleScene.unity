@@ -347,10 +347,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2018449522}
-        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindSaveLoad,
-          Unity.InputSystem.RebindingUI
-        m_MethodName: LoadBindings
+      - m_Target: {fileID: 2018449521}
+        m_TargetAssemblyTypeName: RebindExtension.RebindSchemeController, Assembly-CSharp
+        m_MethodName: DisardBindings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -494,10 +493,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559867678}
-        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindSaveLoad,
-          Unity.InputSystem.RebindingUI
-        m_MethodName: SaveBindings
+      - m_Target: {fileID: 1559867677}
+        m_TargetAssemblyTypeName: RebindExtension.RebindSchemeController, Assembly-CSharp
+        m_MethodName: ApplyBindings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1069,7 +1067,6 @@ GameObject:
   m_Component:
   - component: {fileID: 242039685}
   - component: {fileID: 242039684}
-  - component: {fileID: 242039686}
   m_Layer: 0
   m_Name: GameplayManager
   m_TagString: Untagged
@@ -1089,7 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae298771df4f91a48baebb2f02cda1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bindings: {fileID: 242039686}
+  _playerInput: {fileID: -944628639613478452, guid: aabac7b827b0b0542a88820ceb6632a9, type: 3}
 --- !u!4 &242039685
 Transform:
   m_ObjectHideFlags: 0
@@ -1105,19 +1102,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &242039686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242039683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6c2da2db9374dada6761b5e35121c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: {fileID: -944628639613478452, guid: aabac7b827b0b0542a88820ceb6632a9, type: 3}
 --- !u!1 &325478114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,10 +1326,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2018449522}
-        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindSaveLoad,
-          Unity.InputSystem.RebindingUI
-        m_MethodName: SaveBindings
+      - m_Target: {fileID: 2018449521}
+        m_TargetAssemblyTypeName: RebindExtension.RebindSchemeController, Assembly-CSharp
+        m_MethodName: ApplyBindings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1438,7 +1421,7 @@ RectTransform:
   m_Children:
   - {fileID: 191540984}
   m_Father: {fileID: 423872264}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1489,10 +1472,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559867678}
-        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindSaveLoad,
-          Unity.InputSystem.RebindingUI
-        m_MethodName: LoadBindings
+      - m_Target: {fileID: 1559867677}
+        m_TargetAssemblyTypeName: RebindExtension.RebindSchemeController, Assembly-CSharp
+        m_MethodName: DisardBindings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1774,9 +1756,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2018449521}
-        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.ResetDeviceBindings,
-          Unity.InputSystem.RebindingUI
-        m_MethodName: ResetBindings
+        m_TargetAssemblyTypeName: RebindExtension.RebindSchemeController, Assembly-CSharp
+        m_MethodName: ResetScheme
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2098,8 +2079,8 @@ RectTransform:
   m_Children:
   - {fileID: 2021340378}
   - {fileID: 141727489}
-  - {fileID: 1549790148}
   - {fileID: 369256634}
+  - {fileID: 1549790148}
   m_Father: {fileID: 1559867673}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4467,7 +4448,7 @@ RectTransform:
   m_Children:
   - {fileID: 668142170}
   m_Father: {fileID: 423872264}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4519,9 +4500,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1559867677}
-        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.ResetDeviceBindings,
-          Unity.InputSystem.RebindingUI
-        m_MethodName: ResetBindings
+        m_TargetAssemblyTypeName: RebindExtension.RebindSchemeController, Assembly-CSharp
+        m_MethodName: ResetScheme
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4659,7 +4639,6 @@ GameObject:
   - component: {fileID: 1559867675}
   - component: {fileID: 1559867676}
   - component: {fileID: 1559867677}
-  - component: {fileID: 1559867678}
   m_Layer: 5
   m_Name: RebindKeyboardPanel
   m_TagString: Untagged
@@ -4711,10 +4690,9 @@ MonoBehaviour:
   OnHotClose:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559867678}
-        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindSaveLoad,
-          Unity.InputSystem.RebindingUI
-        m_MethodName: LoadBindings
+      - m_Target: {fileID: 1559867677}
+        m_TargetAssemblyTypeName: RebindExtension.RebindSchemeController, Assembly-CSharp
+        m_MethodName: DisardBindings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4738,24 +4716,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1559867672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41109fca0d822a94a87f585b642b1388, type: 3}
+  m_Script: {fileID: 11500000, guid: 264dfd1b9e05b1a4dbd693f9e2f04eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputActions: {fileID: -944628639613478452, guid: aabac7b827b0b0542a88820ceb6632a9, type: 3}
+  _actions: {fileID: -944628639613478452, guid: aabac7b827b0b0542a88820ceb6632a9, type: 3}
   _controlScheme: Keyboard&Mouse
---- !u!114 &1559867678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559867672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6c2da2db9374dada6761b5e35121c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: {fileID: -944628639613478452, guid: aabac7b827b0b0542a88820ceb6632a9, type: 3}
 --- !u!114 &1604519620 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 656158138065779519, guid: aa7d5f4229afe2a4aa958ba28c27d2b8, type: 3}
@@ -5226,7 +5191,6 @@ GameObject:
   - component: {fileID: 2018449519}
   - component: {fileID: 2018449520}
   - component: {fileID: 2018449521}
-  - component: {fileID: 2018449522}
   m_Layer: 5
   m_Name: RebindGamepadPanel
   m_TagString: Untagged
@@ -5278,10 +5242,9 @@ MonoBehaviour:
   OnHotClose:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2018449522}
-        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindSaveLoad,
-          Unity.InputSystem.RebindingUI
-        m_MethodName: LoadBindings
+      - m_Target: {fileID: 2018449521}
+        m_TargetAssemblyTypeName: RebindExtension.RebindSchemeController, Assembly-CSharp
+        m_MethodName: DisardBindings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5305,24 +5268,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2018449516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41109fca0d822a94a87f585b642b1388, type: 3}
+  m_Script: {fileID: 11500000, guid: 264dfd1b9e05b1a4dbd693f9e2f04eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputActions: {fileID: -944628639613478452, guid: aabac7b827b0b0542a88820ceb6632a9, type: 3}
+  _actions: {fileID: -944628639613478452, guid: aabac7b827b0b0542a88820ceb6632a9, type: 3}
   _controlScheme: Gamepad
---- !u!114 &2018449522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018449516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6c2da2db9374dada6761b5e35121c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: {fileID: -944628639613478452, guid: aabac7b827b0b0542a88820ceb6632a9, type: 3}
 --- !u!1 &2021340377
 GameObject:
   m_ObjectHideFlags: 0
