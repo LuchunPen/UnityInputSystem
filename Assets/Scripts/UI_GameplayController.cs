@@ -7,11 +7,13 @@ public class UI_GameplayController : MonoBehaviour
 {
     [SerializeField] private InputSystemUIInputModule _input;
     [SerializeField] private UI_WindowsController _menuControllers;
+    [SerializeField] private UI_KeyDisplayer[] _keyDisplayers;
     [SerializeField] private string _pauseMenuName;
 
     private void Awake()
     {
         Subscribe();
+        UpdateKeyDisplayers();
     }
 
     private void OnDestroy()
@@ -46,6 +48,7 @@ public class UI_GameplayController : MonoBehaviour
         if (_menuControllers.ActiveWindowsCount == 0)
         {
             Signals.TryToUnpause?.Invoke(this, null);
+            UpdateKeyDisplayers();
         }
     }
 
@@ -62,5 +65,13 @@ public class UI_GameplayController : MonoBehaviour
 
         _menuControllers.OpenWindow(_pauseMenuName);
         return _menuControllers.ActiveWindowsCount;
+    }
+
+    private void UpdateKeyDisplayers()
+    {
+        foreach(UI_KeyDisplayer disp in _keyDisplayers)
+        {
+            disp.Display();
+        }
     }
 }
